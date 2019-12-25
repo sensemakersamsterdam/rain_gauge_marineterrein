@@ -1,0 +1,25 @@
+{
+    "schema": 2,
+    "known_networks": [
+        {
+            "ssid": "ssid1",
+            "password": "pw1",
+            "enables_webrepl": false
+        },
+        {
+            "enables_webrepl": false,
+            "password": "pw2",
+            "ssid": "ssid2"
+        }
+    ],
+    "access_point": {
+        "enables_webrepl": true,
+        "start_policy": "always",
+        "config": {
+            "hidden": false,
+            "essid": "SenseGauge01",
+            "channel": 11,
+            "password": "password..."
+        }
+    }
+}
