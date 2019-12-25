@@ -20,7 +20,7 @@ connect_time = 0
 def setup():
     global client
 
-    server = b'lb.cluster-meetup-demo.aws.surfsaralabs.nl'
+    server = b'mqtt.sensemakersams.org'
     port = 9998
 
     client = mqtt.MQTTClient(dev_id, server, port=port,
@@ -30,13 +30,13 @@ def setup():
 def _connect():
     global connect_time
 
-    if not WM.wlan().active():
-        log.info('No wifi; discarded.')
-        return False
     try:
+        if not WM.wlan().active():
+            log.info('No wifi; discarded.')
+            return False
         client.connect()
         connect_time = time.time()
-    except OSError as e:
+    except Exception as e:
         log.error('Connect%s; discarded.', e)
         return False
     return True
@@ -58,12 +58,12 @@ def disconnect():
 
 def publish(payload):
 
-    topic = b'pipeline/' + user + b'/' + dev_id
-    d = {'app_id': user, 'dev_id': dev_id, 'payload_fields': payload}
-    ds = json.dumps(d)
-    log.info('payload: %s', ds)
-
     try:
+        topic = b'pipeline/' + user + b'/' + dev_id
+        d = {'app_id': user, 'dev_id': dev_id, 'payload_fields': payload}
+        ds = json.dumps(d)
+        log.info('payload: %s', ds)
+
         client.publish(topic, ds)
     except Exception:
         if _connect():
