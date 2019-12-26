@@ -133,3 +133,5 @@ dmypy.json
 # Passwordcontaining stuff
 networks.json
 
+# rshell deploy
+pyimage/

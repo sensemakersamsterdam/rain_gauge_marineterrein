@@ -1,0 +1,3 @@
+[submodule "micropython-wifimanager"]
+	path = micropython-wifimanager
+	url = https://github.com/mitchins/micropython-wifimanager.git
